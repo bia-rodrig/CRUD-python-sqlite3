@@ -1,56 +1,116 @@
-import sqlite3
+import os, sqlite3
 
 #Bianca Rodrigues
 #GitHub: https://github.com/bia-rodrig/
 
-#Cria Bando de dados
-connection = sqlite3.connect('db/db_teste.db') 
-#Conecta ao bando de dados. 
-#"db": pasta dentro da pasta do projeto. 
-#"test.db": nome do BD. se não existir, vai criar
+#Check if DB exists and create if doesn't
+check = os.path.exists('db_test.db')
 
-# Cursor dos comandos SQL
-cursor = connection.cursor()
+if (not check):
+	file = open('db_test.db', 'w')
+	file.close()
+	print('created')
 
+	# connection to DB
+	connection = sqlite3.connect('db_test.db')
 
-#Cria tabeLa
-sql = 'CREATE TABLE IF NOT EXISTS Users
-			(ID INTEGER PRIMARY KEY AUTOINCREMENT,
-			NAME VARCHAR(100),
-			AGE INT)'
+	# SQLite commands cursor
+	cursor = connection.cursor()
 
-# Nome da tabela: Users
-# Colunas: 
+	#Create query to table
+	sql = 'CREATE TABLE IF NOT EXISTS Contacts (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(100), AGE INT, PHONE VARCHAR(20))'
+
+# Table Name: Contacts
+# Colunms:
 #	ID: Integer
 #	Name: varchar(100)
 #	AGE: Integer
-			
-cursor.execute(sql)
+#	PHONE: VARCHAR(20)
 
-'''Create '''
-sql = "INSERT INTO Users (NAME, AGE) VALUES ('Bianca', 32)"
-cursor.execute(sql)
+	# Execute create table command
+	cursor.execute(sql)
+	print('Table created')
+	connection.close() # always close connection after an execute
 
-'''Update'''
-sql = "UPDATE Users set name = 'Bianca Rodrigues' WHERE ID=1"
-cursor.execute(sql)
+op = 5 # initializing option variable
 
-'''Delete'''
-sql = "DELETE FROM Users where ID=1"
-cursor.execute(sql)
+print('1 - Insert contact')
+print('2 - Update contact')
+print('3 - Delete contact')
+print('4 - List')
+print('0 - Exit')
 
-connection.commit() #para gravar no arquivo
 
-'''READ'''
-#seleciona dado da tabela
-sql = 'SELECT * FROM USERS'
-#sql = 'SELECT ID, NAME, AGE FROM Users where id="1"'
+def insert_contact():
+	print('\nInsert contact info:')
+	name = input('Name: ')
+	age = input('Age: ')
+	phone = input('Phone: ')
 
-cursor.execute(sql)
+	connection = sqlite3.connect('db_test.db')
+	cursor = connection.cursor()
 
-rows = cursor.fetchall()
+	# Insert contact
+	cursor.execute('INSERT INTO Contacts (NAME, AGE, PHONE) VALUES (?, ?, ?)', (name, age, phone))
+	connection.commit()
+	connection.close()
+	print('Contact inserted\n')
 
-for row in rows:
-	print (row)
 
-connection.close()
+def update_contact():
+	print('\nInform contact ID to update:')
+	select_id = input('ID: ')
+
+	new_name = input('Name: ')
+	new_age = input('Age: ')
+	new_phone = input('Phone: ')
+
+	connection = sqlite3.connect('db_test.db')
+	cursor = connection.cursor()
+
+	cursor.execute('UPDATE Contacts set NAME = ?, AGE = ?, PHONE = ? where ID=?', (new_name, new_age, new_phone, select_id))
+	connection.commit()
+	connection.close()
+	print('Contact updated\n')
+
+
+def delete_contact():
+	print('\nInform contact ID to delete:')
+	select_id = input('ID: ')
+
+	connection = sqlite3.connect('db_test.db')
+	cursor = connection.cursor()
+
+	cursor.execute('DELETE FROM Contacts where ID=?', (select_id))
+	connection.commit()
+	connection.close()
+	print('Contact deleted\n')
+
+
+
+
+def list_contacts():
+	print('\nContacts list:')
+	connection = sqlite3.connect('db_test.db')
+	cursor = connection.cursor()
+	cursor.execute('SELECT * from Contacts')
+	contacts = cursor.fetchall()
+	for item in contacts:
+		print(item)
+	connection.close()
+	print('\n')
+
+
+def exit():
+	print('Finished')
+
+switch = {'1': insert_contact, '2': update_contact, '3': delete_contact, '4': list_contacts, '0': exit}
+
+
+while int(op) != 0:
+	op = input('Choose an option:')
+	if (int(op) <= 4):
+		call = switch.get(op)
+		call()
+	else:
+		print('Invalid option')
