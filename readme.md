@@ -9,7 +9,7 @@ Application that shows how to:
 * Delete
 * Search
 
-Data from SQLite3 DataBase.
+Data from SQLite3 Database.
 
 ## DataBase
 
@@ -26,3 +26,7 @@ Colunms:
 ## Interface
 
 ![image-20220623171630766](https://github.com/bia-rodrig/CRUD-python-sqlite3/blob/master/images/interface.png)
+
+## Run
+
+Starts running file **interface.py**
