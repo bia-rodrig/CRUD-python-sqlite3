@@ -25,4 +25,4 @@ Colunms:
 
 ## Interface
 
-![image-20220623171630766](C:\Users\Samsung\AppData\Roaming\Typora\typora-user-images\image-20220623171630766.png)
+![image-20220623171630766](https://github.com/bia-rodrig/CRUD-python-sqlite3/blob/master/images/interface.png)
