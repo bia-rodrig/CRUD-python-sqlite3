@@ -4,6 +4,7 @@ import os, sqlite3
 #GitHub: https://github.com/bia-rodrig/
 
 #Check if DB exists and create if doesn't
+'''
 check = os.path.exists('db_test.db')
 
 if (not check):
@@ -24,93 +25,69 @@ if (not check):
 # Colunms:
 #	ID: Integer
 #	Name: varchar(100)
-#	AGE: Integer
 #	PHONE: VARCHAR(20)
-
-	# Execute create table command
-	cursor.execute(sql)
-	print('Table created')
-	connection.close() # always close connection after an execute
-
-op = 5 # initializing option variable
-
-print('1 - Insert contact')
-print('2 - Update contact')
-print('3 - Delete contact')
-print('4 - List')
-print('0 - Exit')
+'''
 
 
-def insert_contact():
-	print('\nInsert contact info:')
-	name = input('Name: ')
-	age = input('Age: ')
-	phone = input('Phone: ')
-
-	connection = sqlite3.connect('db_test.db')
+def create_db(db_file):
+	file = open(db_file, 'w')
+	file.close()
+	connection = sqlite3.connect(db_file)
 	cursor = connection.cursor()
+	sql = 'CREATE TABLE IF NOT EXISTS Contacts (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME VARCHAR(100), PHONE VARCHAR(20))'
+	cursor.execute(sql)
+	connection.close()
 
-	# Insert contact
-	cursor.execute('INSERT INTO Contacts (NAME, AGE, PHONE) VALUES (?, ?, ?)', (name, age, phone))
+def check_if_exists(db_file, name):
+	connection = sqlite3.connect(db_file)
+	cursor = connection.cursor()
+	cursor.execute('SELECT * FROM Contacts WHERE NAME=?', (name,))
+	result = cursor.fetchall()
+	if (len(result) > 0):
+		return True
+	else: return False
+
+def insert_contact(db_file, name, phone):
+	connection = sqlite3.connect(db_file)
+	cursor = connection.cursor()
+	cursor.execute('INSERT INTO Contacts (NAME, PHONE) VALUES (?, ?)', (name, phone))
 	connection.commit()
 	connection.close()
-	print('Contact inserted\n')
 
 
-def update_contact():
-	print('\nInform contact ID to update:')
-	select_id = input('ID: ')
-
-	new_name = input('Name: ')
-	new_age = input('Age: ')
-	new_phone = input('Phone: ')
-
-	connection = sqlite3.connect('db_test.db')
+def update_contact(db_file, id_var, name, phone):
+	connection = sqlite3.connect(db_file)
 	cursor = connection.cursor()
 
-	cursor.execute('UPDATE Contacts set NAME = ?, AGE = ?, PHONE = ? where ID=?', (new_name, new_age, new_phone, select_id))
+	cursor.execute('UPDATE Contacts set NAME = ?, PHONE = ? where ID=?', (name, phone, id_var))
 	connection.commit()
 	connection.close()
 	print('Contact updated\n')
 
-
-def delete_contact():
-	print('\nInform contact ID to delete:')
-	select_id = input('ID: ')
-
-	connection = sqlite3.connect('db_test.db')
+def search_contact(db_file, name):
+	connection = sqlite3.connect(db_file)
 	cursor = connection.cursor()
 
-	cursor.execute('DELETE FROM Contacts where ID=?', (select_id))
+	sql = 'SELECT * FROM Contacts Where NAME LIKE \'%' + name +'%\''
+
+	cursor.execute(sql)
+	result = cursor.fetchall()
+	connection.close()
+	return result
+
+
+def delete(db_file, contact_id):
+	connection = sqlite3.connect(db_file)
+	cursor = connection.cursor()
+	cursor.execute('DELETE FROM Contacts where ID=?', (contact_id,))
 	connection.commit()
 	connection.close()
-	print('Contact deleted\n')
 
 
-
-
-def list_contacts():
-	print('\nContacts list:')
-	connection = sqlite3.connect('db_test.db')
+def list_contacts(db_name):
+	connection = sqlite3.connect(db_name)
 	cursor = connection.cursor()
 	cursor.execute('SELECT * from Contacts')
 	contacts = cursor.fetchall()
-	for item in contacts:
-		print(item)
 	connection.close()
-	print('\n')
-
-
-def exit():
-	print('Finished')
-
-switch = {'1': insert_contact, '2': update_contact, '3': delete_contact, '4': list_contacts, '0': exit}
-
-
-while int(op) != 0:
-	op = input('Choose an option:')
-	if (int(op) <= 4):
-		call = switch.get(op)
-		call()
-	else:
-		print('Invalid option')
+	return contacts

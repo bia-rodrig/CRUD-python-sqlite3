@@ -1,5 +1,5 @@
 # Python - SQLITE3 - CRUD
-Branch new_version: code with tkinter interface
+New Version of SQLite CRUD with tkinter interface
 
 Application that shows how to:
 
@@ -7,12 +7,13 @@ Application that shows how to:
 * Read
 * Update
 * Delete
+* Search
 
-items in SQLite3 DataBase.
+Data from SQLite3 DataBase.
 
 ## DataBase
 
-Database file: db_test.db
+Database file: db/contacts.db
 
 Table: Contacts
 
@@ -20,5 +21,4 @@ Colunms:
 
 * ID: integer
 * Name: varchar(100)
-* Age: integer
 * Phone: varchar(20)
