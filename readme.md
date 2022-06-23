@@ -1,5 +1,5 @@
 # Python - SQLITE3 - CRUD
-Branch old_version: code in prompt window
+Branch new_version: code with tkinter interface
 
 Application that shows how to:
 
