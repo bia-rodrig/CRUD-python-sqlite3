@@ -22,3 +22,7 @@ Colunms:
 * ID: integer
 * Name: varchar(100)
 * Phone: varchar(20)
+
+## Interface
+
+![image-20220623171630766](C:\Users\Samsung\AppData\Roaming\Typora\typora-user-images\image-20220623171630766.png)
