@@ -1,0 +1,110 @@
+body{
+    background: #F2F2F2;
+    font-family: 'Arial', sans-serif;
+}
+
+#left {
+    float: left;
+    width: 300px;
+    height: 100%;
+    background: #042B6D;
+    position: fixed;
+    color: #F2F2F2;
+}
+
+.profile{
+    width: 200px;
+    min-width: 100px;
+    min-width: 100px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#left h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px 0px;
+}
+
+.infos p{
+    padding: 15px 30px;
+    text-align: left;
+}
+
+.infos a:link, a:visited{
+    text-decoration: none;
+    color: #F2F2F2;
+}
+
+.links p:hover{
+    transform: scale(1.05);
+    filter: invert(52%) sepia(98%) saturate(277%) hue-rotate(102deg) brightness(90%) contrast(83%);
+}
+
+.icon {
+    width: 20px;
+    padding-right: 15px;
+    filter: invert(34%) sepia(89%) saturate(2261%) hue-rotate(197deg) brightness(102%) contrast(105%);;
+}
+
+#right {
+    height: 100%;
+    max-width: 100%;
+    background-color: #F2F2F2;
+    padding-left: 300px;
+}
+
+.top{
+    background: #164F86;
+    height: 250px;
+    position: relative
+}
+
+.top h1{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #F2F2F2;
+    font-size: 60px;
+}
+
+.title-back{
+    height: 120px;
+    background-color: #BCDCCE;
+    margin-bottom: 10px;
+}
+
+.sub-title{
+	text-align: left;
+	font-size: 2em; /* dobro do tamanho padrão (15px) - 2em = 30px */
+	margin: 1em 5em 1em; /*vai ter um tamanho de fonte, na margem inferior*/
+	clear: left;
+	/*color: rgba(0, 0, 0, 0.3); com opacidade - camada alfa - 30% preto**/
+	font-weight: bold;
+    max-width: 100%;
+    padding: 20px;
+    opacity: 2;
+    
+}
+
+.content-text{
+    width:20%;
+    float: left;
+    margin: 1em 10em 1em;
+    position: relative;
+    text-align: justify;
+    
+}
+
+.img-interface{
+    width: 30%;
+    float: left;
+    text-align: center;
+    width: 350px;
+    transition: 400ms;
+	box-shadow: 10px 10px 10px 0 #000000;    
+}
