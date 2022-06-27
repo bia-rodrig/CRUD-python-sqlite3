@@ -1,0 +1,27 @@
+.about  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #3F4E4F;
+    text-align: center;
+    
+    background-color: #F2F2F2;
+
+    padding-top: 15rem;
+    padding-bottom: 2.5rem;
+    justify-content: center;
+}
+
+.about-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.about-text {
+    font-size: 1.25rem;
+    line-height: normal;
+    margin: 0 auto 2.5rem;
+}

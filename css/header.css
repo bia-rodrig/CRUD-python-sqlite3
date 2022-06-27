@@ -7,6 +7,8 @@
     padding-top: .75rem;
     padding-bottom: .75rem;
     position: absolute;
+    /*border-bottom: 1px solid #164F86;*/
+    background-color: #DCD7C9;
 }
 
 .img-name{
@@ -14,33 +16,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    padding-right: 2rem;
+    padding: .75em;
+    padding-left: 2em;
 }
 
 .img-name img{
-    width: 5rem;
-    justify-content: center;
+    width: 5rem
 }
 
 .img-name h1{
-    font-size: 1.5rem;
+    font-size: 1.2em;
     font-weight: 700;
     text-transform: uppercase;
-    margin-top: 1.5rem;
+    margin-top: .75rem;
+    text-align: center;
 }
 
 .infos{
-    width: 20rem;
-    background-color: yellow;
+    width: 25rem;
     box-sizing: border-box;
     align-items: left;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
+    padding-left: .5em;
     padding-right: 2rem;
+    border-left: 1px solid #2C3639;
+}
+
+.infos div{
+    padding-top: 1em;
 }
 
 .infos-item{
-    float: left;
+    display: flex;    
+    flex-direction: row;
+}
+
+.icon{
+    padding-right: 1em;
+    filter: invert(20%) sepia(26%) saturate(253%) hue-rotate(147deg) brightness(95%) contrast(97%);
+}
+
+.links:visited, .links:link{
+    text-decoration: none;
+    color: #2C3639;
+}
+
+.infos-links:hover, .icon:hover{
+    filter: invert(49%) sepia(50%) saturate(302%) hue-rotate(345deg) brightness(94%) contrast(90%);
 }
