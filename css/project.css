@@ -25,3 +25,11 @@
     line-height: normal;
     margin: 0 auto 2.5rem;
 }
+
+.container h2{
+    font-size: 2em;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid #3F4E4F;
+}
