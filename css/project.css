@@ -26,14 +26,57 @@
     margin: 0 auto 2.5rem;
 }
 
+.container{
+    padding-bottom: 2rem;
+}
+
 .container h2{
     font-size: 2em;
     font-weight: 700;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     padding-top: 1rem;
     border-bottom: 1px solid #3F4E4F;
 }
 
-.how-to-user{
-    
+.how-to-use {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.how-to-use ul{
+    padding-bottom: 1em;
+}
+
+.how-to-use li{
+    padding: 1em;
+    text-align: justify;
+}
+
+.how-to-use strong{
+    font-weight: 700;    
+}
+
+.interface{
+    width: 100%;
+    max-width: 400px;
+}
+
+.more-info{
+    text-align: justify;
+}
+
+.more-info h3{
+    font-weight: 700;
+    padding-bottom: 1em;
+}
+
+.more-info strong{
+    font-weight: 700; 
+}
+
+.more-info li{
+    padding: 1em;
+    text-align: justify;
 }
