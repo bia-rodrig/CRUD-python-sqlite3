@@ -86,3 +86,10 @@
     padding-bottom: 1em;
     text-align: justify;
 }
+
+footer{
+    font-size: 0.65em;
+    display: block;
+    text-align: center;
+    padding-bottom: 1em;
+}
