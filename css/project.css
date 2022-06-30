@@ -40,13 +40,13 @@
 
 .how-to-use {
     width: 100%;
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .how-to-use ul{
     padding-bottom: 1em;
+    display: block;
 }
 
 .how-to-use li{
@@ -64,7 +64,9 @@
 }
 
 .more-info{
-    text-align: justify;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .more-info h3{
