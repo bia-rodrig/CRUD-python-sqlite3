@@ -14,7 +14,7 @@ Application that shows how to:
 
 Data from SQLite3 Database.
 
-## DataBase
+## Database
 
 Database file: db/contacts.db
 
